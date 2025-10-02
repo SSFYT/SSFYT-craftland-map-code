@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSFYT FREE FIRE CRAFTLAND MAP CODES</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* लाइट थीम के लिए कस्टम स्टाइलिंग */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7; /* हल्का ऑफ-व्हाइट बैकग्राउंड */
+            color: #1f2937; /* गहरा टेक्स्ट */
+            transition: all 0.3s ease;
+        }
+        /* कार्ड्स के लिए क्लीन शैडो और बॉर्डर */
+        .map-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .map-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+        /* प्राइमरी बटन (रेड) */
+        .btn-primary {
+            background-color: #ef4444; /* ब्राइट रेड */
+            color: white;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #dc2626;
+            transform: scale(1.01);
+        }
+        /* सेकेंडरी बटन (टील/सियान) */
+        .btn-secondary {
+            background-color: #06b6d4; /* सियान */
+            color: white;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+        .btn-secondary:hover {
+            background-color: #0891b2;
+            transform: scale(1.01);
+        }
+        /* Modal Backdrop */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        /* छोटे टैब बटन */
+        .tab-btn {
+            font-size: 0.875rem; /* text-sm */
+            padding: 0.375rem 0.75rem; /* px-3 py-1.5 */
+        }
+
+        /* Responsive Header Styling */
+        #main-header {
+            line-height: 1.1; /* लाइन स्पेसिंग कम करना */
+        }
+        @media (max-width: 640px) {
+            #main-header span {
+                display: block; /* मोबाइल पर हर पार्ट को नई लाइन पर दिखाएं */
+                margin: 0.2rem 0 !important;
+                font-size: 1.5rem !important;
+            }
+            #main-header .text-5xl {
+                font-size: 2.25rem !important; /* SSFYT को थोड़ा बड़ा रखें */
+            }
+        }
+        /* General Flex Fix: Ensures the content area shrinks and the button stays put */
+        .telegram-card-content {
+            min-width: 0; /* Ensures the flex item can shrink */
+        }
+        .telegram-btn {
+             flex-shrink: 0; /* Ensures the button keeps its size */
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <div id="app" class="p-4 sm:p-8 max-w-7xl mx-auto">
+        
+        <!-- Header -->
+        <header class="mb-4 border-b border-gray-200 pb-2">
+            <!-- Custom Styled Header -->
+            <h1 id="main-header" class="text-4xl font-extrabold text-center">
+                <!-- SSFYT: Dark Blue, Very Bold, Slightly Larger -->
+                <span class="text-indigo-700 font-black text-5xl tracking-tight mr-1">SSFYT</span>
+                <!-- FREE FIRE: Bright Red, Bold -->
+                <span class="text-red-600 font-bold mx-1">FREE FIRE</span>
+                <!-- CRAFTLAND: Bright Green, Extra Bold -->
+                <span class="text-green-600 font-extrabold mx-1">CRAFTLAND</span>
+                <!-- MAP CODES: Dark Gray, Standard Size -->
+                <span class="text-gray-700 font-semibold text-3xl mx-1">MAP CODES</span>
+            </h1>
+            <!-- User ID Display is hidden -->
+            <div id="user-id-status" class="hidden"></div> 
+        </header>
+
+        <!-- Navigation and Action Buttons -->
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sticky top-0 bg-white p-4 z-10 border-b border-gray-200 rounded-lg shadow-sm">
+            <button id="tab-all-maps" onclick="showView('all-maps-view')" class="tab-btn rounded-full font-semibold text-white bg-red-600 hover:bg-red-700 transition duration-150 shadow-md">
+                सभी मैप कोड्स
+            </button>
+            <button id="tab-links" onclick="showView('links-view')" class="tab-btn rounded-full font-semibold text-gray-700 bg-gray-200 hover:bg-gray-300 transition duration-150 shadow-md">
+                उपयोगी लिंक्स
+            </button>
+            
+            <!-- Upload Button (Only visible to the Creator) -->
+            <button id="upload-button" onclick="openUploadModal()" class="tab-btn rounded-full font-semibold text-white bg-green-600 hover:bg-green-700 transition duration-150 shadow-md ml-4 hidden">
+                + नया मैप अपलोड करें
+            </button>
+        </div>
+
+        <!-- 1. All Maps View (सिंगल, संयुक्त व्यू) -->
+        <div id="all-maps-view" class="view">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">🌍 सभी मैप कोड्स</h2>
+            <div id="all-maps-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- सभी मैप कार्ड्स यहाँ JavaScript द्वारा लोड होंगे -->
+            </div>
+            <!-- लोडिंग मैसेज, शुरुआत में दिखना चाहिए -->
+            <p id="all-maps-loading" class="text-gray-500 col-span-full text-center p-10">मैप्स लोड हो रहे हैं...</p>
+        </div>
+        
+        <!-- 2. Links View -->
+        <div id="links-view" class="view hidden">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">🔗 उपयोगी कम्युनिटी लिंक्स</h2>
+            <div class="space-y-6">
+                <!-- Links Cards -->
+                
+                <!-- 1. SSFYT Official YouTube -->
+                <div class="p-6 map-card rounded-xl flex items-center justify-between border-red-500 border-2">
+                    <div class="telegram-card-content">
+                        <h3 class="text-2xl font-bold mb-1 text-red-600">SSFYT Official YouTube</h3>
+                        <p class="text-gray-600">क्राफ्टलैंड मैप आइडिया और ट्यूटोरियल्स के लिए SSFYT चैनल देखें।</p>
+                    </div>
+                    <a href="https://youtube.com/@ssfyt_777?si=J8V7QEsmmfMOgey8" target="_blank" rel="noopener noreferrer" 
+                       class="btn-primary px-4 py-2 rounded-lg inline-block text-sm font-semibold whitespace-nowrap ml-4 telegram-btn">
+                       चैनल देखें
+                    </a>
+                </div>
+
+                <!-- 2. Telegram Group -->
+                <div class="p-6 map-card rounded-xl flex items-center justify-between border-blue-500 border-2">
+                    <div class="telegram-card-content">
+                        <h3 class="text-2xl font-bold mb-1 text-blue-600">CRAFTLAND TEAM Telegram Group</h3>
+                        <p class="text-gray-600">अन्य मैप क्रिएटर्स के साथ जुड़ें और कोड साझा करें।</p>
+                    </div>
+                    <a href="https://t.me/CRAFTLAND_TEAM" target="_blank" rel="noopener noreferrer" 
+                       class="btn-secondary telegram-btn px-4 py-2 rounded-lg inline-block text-sm font-semibold whitespace-nowrap ml-4">
+                       टेलीग्राम पर जाएँ
+                    </a>
+                </div>
+
+                <!-- 3. Discord Group -->
+                <div class="p-6 map-card rounded-xl flex items-center justify-between border-purple-500 border-2">
+                    <div class="telegram-card-content">
+                        <h3 class="text-2xl font-bold mb-1 text-purple-600">Discord Group</h3>
+                        <p class="text-gray-600">वॉयस चैट और गेमिंग चर्चा के लिए हमारे सर्वर से जुड़ें।</p>
+                    </div>
+                    <a href="https://discord.gg/official-craftland-creators-india-1338827872781205556" target="_blank" rel="noopener noreferrer" 
+                       class="btn-secondary bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg inline-block text-sm font-semibold whitespace-nowrap ml-4 telegram-btn">
+                       डिस्कॉर्ड पर जाएँ
+                    </a>
+                </div>
+
+                <!-- 4. Item Code Website -->
+                <div class="p-6 map-card rounded-xl flex items-center justify-between border-green-500 border-2">
+                    <div class="telegram-card-content">
+                        <h3 class="text-2xl font-bold mb-1 text-green-600">Item Code Website</h3>
+                        <p class="text-gray-600">क्राफ्टलैंड आइटम ID कोड्स (0xme tool) के लिए यह वेबसाइट देखें।</p>
+                    </div>
+                    <a href="https://0xme.github.io/ItemID2/?mode=2&page=1" target="_blank" rel="noopener noreferrer" 
+                       class="btn-secondary px-4 py-2 rounded-lg inline-block text-sm font-semibold whitespace-nowrap ml-4 telegram-btn">
+                       आइटम वेबसाइट देखें
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message/Notification Box (Custom Alert) -->
+        <div id="message-box" class="fixed top-4 right-4 p-4 rounded-lg shadow-xl text-white font-semibold hidden z-50 transition-opacity duration-300">
+            <!-- संदेश यहाँ प्रदर्शित होगा -->
+        </div>
+
+    </div>
+
+    <!-- Upload Map Modal -->
+    <div id="upload-modal" class="fixed inset-0 modal-backdrop hidden flex items-center justify-center p-4 z-40">
+        <div class="bg-white p-8 rounded-xl w-full max-w-lg border-t-4 border-red-500 shadow-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">नया मैप अपलोड करें</h3>
+                <button onclick="closeUploadModal()" class="text-gray-500 hover:text-gray-800 text-3xl leading-none">&times;</button>
+            </div>
+            
+            <form id="upload-form" class="space-y-4">
+                <div>
+                    <label for="map-name" class="block text-sm font-medium text-gray-700 mb-1">मैप का नाम</label>
+                    <input type="text" id="map-name" required class="w-full p-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-800 focus:ring-red-500 focus:border-red-500" placeholder="उदाहरण: स्नो बैटल ग्राउंड">
+                </div>
+                
+                <div>
+                    <label for="map-code" class="block text-sm font-medium text-gray-700 mb-1">क्राफ्टलैंड मैप कोड</label>
+                    <input type="text" id="map-code" required class="w-full p-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-800 focus:ring-red-500 focus:border-red-500" placeholder="कोड यहाँ पेस्ट करें (जैसे: 9876543210)">
+                </div>
+
+                <!-- File Input for Image Upload (गैलरी से अपलोड) -->
+                <div>
+                    <label for="map-image-file" class="block text-sm font-medium text-gray-700 mb-1">मैप इमेज (गैलरी से)</label>
+                    <input type="file" id="map-image-file" accept="image/png, image/jpeg" class="w-full p-3 rounded-lg bg-gray-50 border border-gray-300 text-gray-800 focus:ring-red-500 focus:border-red-500">
+                    <p class="text-xs text-red-500 mt-1" id="file-size-warning" style="display: none;">
+                        ⚠️ इमेज 500KB से कम होनी चाहिए (डेटाबेस लिमिट के कारण)।
+                    </p>
+                </div>
+
+                <!-- Image Preview -->
+                <div id="image-preview-container" class="mt-4 hidden border border-gray-300 rounded-lg p-2">
+                    <p class="text-sm font-medium text-gray-600 mb-2">इमेज प्रीव्यू:</p>
+                    <img id="image-preview" src="" alt="Image Preview" class="w-full h-32 object-contain rounded-md bg-gray-100">
+                </div>
+                
+                <button type="submit" id="submit-button" class="btn-primary w-full px-4 py-3 rounded-lg flex items-center justify-center font-bold">
+                    <span id="button-text">अपलोड करें</span>
+                    <div id="button-spinner" class="spinner ml-2 hidden"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Confirmation Modal for Deletion -->
+    <div id="confirm-delete-modal" class="fixed inset-0 modal-backdrop hidden flex items-center justify-center p-4 z-40">
+        <div class="bg-white p-6 rounded-xl w-full max-w-sm border-t-4 border-red-600 shadow-2xl">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">⚠️ मैप डिलीट करें</h3>
+            <p class="text-gray-600 mb-6">क्या आप वाकई मैप "<span id="map-name-to-delete" class="font-semibold text-red-600"></span>" को डिलीट करना चाहते हैं? यह कार्रवाई वापस नहीं ली जा सकती।</p>
+            
+            <div class="flex justify-end gap-3">
+                <button onclick="closeDeleteConfirmation()" class="px-4 py-2 rounded-lg bg-gray-200 text-gray-800 font-semibold hover:bg-gray-300 transition">
+                    कैंसिल
+                </button>
+                <button id="confirm-delete-button" class="px-4 py-2 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 transition">
+                    हाँ, डिलीट करें
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Firebase SDK Imports and Logic -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firestore Debugging Log Level
+        setLogLevel('Debug');
+
+        // ======================================================
+        // ⭐ CREATOR ID: यह ID केवल आपके लिए है।
+        // ======================================================
+        const CREATOR_USER_ID = "11657192489081039404"; 
+        
+        // Global Variables for Firebase/App
+        let app, db, auth;
+        let userId = 'loading';
+        let allMapsData = []; 
+        let currentView = 'all-maps-view'; 
+        let isInitialLoadComplete = false; 
+        let deleteTarget = { mapId: null, mapName: null }; // डिलीट करने के लिए टारगेट
+        
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        const defaultPlaceholderImage = "https://placehold.co/400x200/e5e7eb/4b5563?text=Map+Image";
+        
+        // DOM elements
+        const allMapsContainer = document.getElementById('all-maps-container');
+        const allMapsLoading = document.getElementById('all-maps-loading');
+        const messageBox = document.getElementById('message-box');
+        const uploadModal = document.getElementById('upload-modal');
+        const uploadForm = document.getElementById('upload-form');
+        const submitButton = document.getElementById('submit-button');
+        const buttonText = document.getElementById('button-text');
+        const buttonSpinner = document.getElementById('button-spinner');
+        const mapImageFile = document.getElementById('map-image-file');
+        const imagePreview = document.getElementById('image-preview');
+        const imagePreviewContainer = document.getElementById('image-preview-container');
+        const fileSizeWarning = document.getElementById('file-size-warning');
+        const uploadButton = document.getElementById('upload-button'); 
+        const confirmDeleteModal = document.getElementById('confirm-delete-modal');
+        const mapNameToDelete = document.getElementById('map-name-to-delete');
+        const confirmDeleteButton = document.getElementById('confirm-delete-button');
+
+        let uploadedImageBase64 = ''; 
+
+        // --- Utility Functions (उपयोगी फंक्शन) ---
+
+        // Custom Toast Message / Notification
+        function showMessage(text, isError = false) {
+            messageBox.textContent = text;
+            messageBox.style.backgroundColor = isError ? '#ef4444' : '#10b981'; 
+            messageBox.classList.remove('hidden');
+            messageBox.style.opacity = '1';
+
+            setTimeout(() => {
+                messageBox.style.opacity = '0';
+                setTimeout(() => messageBox.classList.add('hidden'), 300);
+            }, 3000);
+        }
+
+        // Copy to Clipboard
+        window.copyToClipboard = (text, mapName) => {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy'); 
+            document.body.removeChild(tempInput);
+            showMessage(`'${mapName}' का कोड कॉपी हो गया: ${text}`);
+        }
+
+        // View Switching और टैब स्टाइल अपडेट करना
+        window.showView = (viewId) => {
+            currentView = viewId;
+            document.querySelectorAll('.view').forEach(view => {
+                view.classList.add('hidden');
+            });
+            document.getElementById(viewId).classList.remove('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-red-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+            });
+            const activeTabId = `tab-${viewId.replace('-view', '')}`;
+            const activeTab = document.getElementById(activeTabId);
+            if (activeTab) {
+                activeTab.classList.remove('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+                activeTab.classList.add('bg-red-600', 'text-white', 'hover:bg-red-700');
+            }
+
+            if (viewId === 'all-maps-view' && isInitialLoadComplete) {
+                renderCurrentView(); 
+            }
+        }
+
+        // Modal Functions
+        window.openUploadModal = () => {
+             // सुरक्षा जांच: केवल क्रिएटर
+             if (userId === CREATOR_USER_ID.trim()) {
+                uploadModal.classList.remove('hidden');
+            } else {
+                 showMessage("आपके पास मैप अपलोड करने की अनुमति नहीं है।", true);
+            }
+        }
+
+        window.closeUploadModal = () => {
+            uploadModal.classList.add('hidden');
+            uploadForm.reset();
+            uploadedImageBase64 = ''; 
+            imagePreviewContainer.classList.add('hidden');
+            fileSizeWarning.style.display = 'none';
+            mapImageFile.value = null; 
+        }
+        
+        window.openDeleteConfirmation = (mapId, mapName) => {
+            // ⭐ सुरक्षा जाँच 2: कन्फर्मेशन खोलने से पहले जाँच
+            if (userId === CREATOR_USER_ID.trim()) {
+                deleteTarget = { mapId, mapName };
+                mapNameToDelete.textContent = mapName;
+                confirmDeleteModal.classList.remove('hidden');
+            } else {
+                showMessage("आपके पास यह मैप डिलीट करने की अनुमति नहीं है।", true);
+            }
+        }
+
+        window.closeDeleteConfirmation = () => {
+            confirmDeleteModal.classList.add('hidden')
